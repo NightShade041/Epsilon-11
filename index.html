@@ -54,6 +54,37 @@
         .main-content p {
             font-size: 1.2em;
         }
+
+        /* Hall of Fame Section */
+        #hall-of-fame {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #333;
+        }
+        #hall-of-fame h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .profile {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            transition: box-shadow 0.3s ease;
+        }
+        .profile img:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 1);
+        }
+        .profile p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -63,14 +94,31 @@
     </header>
     <nav>
         <a href="#">Overview</a>
-        <a href="#">Wall of Fame</a>
+        <a href="#hall-of-fame">Wall of Fame</a> <!-- Updated link -->
         <a href="#">Classified Files</a>
         <a href="#">Incident Reports</a>
     </nav>
     <div class="main-content">
         <img src="epsilon-11.png" alt="Epsilon-11">
-        <h2>WELCOME TO EPSILON-11</h2>
+        <h2>WELCOME TO SITE EPSILON-11</h2>
         <p>The Task Force Even The Anomalies Fear.</p>
+    </div>
+
+    <!-- Hall of Fame Section -->
+    <div id="hall-of-fame">
+        <h2>Hall of Fame</h2>
+        <div class="profile">
+            <img src="profile1.jpg" alt="User 1">
+            <p>Username 1</p>
+        </div>
+        <div class="profile">
+            <img src="profile2.jpg" alt="User 2">
+            <p>Username 2</p>
+        </div>
+        <div class="profile">
+            <img src="profile3.jpg" alt="User 3">
+            <p>Username 3</p>
+        </div>
     </div>
 </body>
 </html>
