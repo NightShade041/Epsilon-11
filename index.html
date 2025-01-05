@@ -1,103 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wall of Fame</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #333;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easter Egg Example</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        h1 {
-            margin: 20px 0;
-        }
+    .main-content, .wall-of-fame {
+      margin: 20px;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
 
-        .wall-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 20px;
-        }
+    .hidden {
+      display: none;
+    }
 
-        .card {
-            background-color: #444;
-            border-radius: 8px;
-            overflow: hidden;
-            width: 200px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
+    /* Hall of Fame Section */
+    .wall-of-fame {
+      background-color: #f5f5f5;
+      color: #333;
+    }
 
-        .card:hover {
-            transform: scale(1.05);
-        }
+    /* Raptor Easter Egg Trigger */
+    .raptor-card {
+      margin: 20px;
+      padding: 20px;
+      background-color: #ffc107;
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid #ff9800;
+    }
 
-        .card img {
-            width: 100%;
-            display: block;
-        }
-
-        .card h2 {
-            margin: 10px 0;
-            font-size: 18px;
-        }
-
-        .card.active {
-            background-color: #222;
-            transform: scale(1.2);
-        }
-    </style>
+    .raptor-card:hover {
+      background-color: #ff9800;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-    <h1>Wall of Fame</h1>
-    <p>The Wall of Fame is a section where we highlight the most famous operatives and contributors.</p>
-    <div class="wall-container">
-        <div class="card" data-name="Private Raptor">
-            <img src="raptor.png" alt="Private Raptor">
-            <h2>Private Raptor</h2>
-        </div>
-        <div class="card" data-name="Starlight">
-            <img src="starlight.png" alt="Starlight">
-            <h2>Starlight</h2>
-        </div>
-        <div class="card" data-name="Reaper">
-            <img src="reaper.png" alt="Reaper">
-            <h2>Reaper</h2>
-        </div>
-        <div class="card" data-name="Shock">
-            <img src="shock.png" alt="Shock">
-            <h2>Shock</h2>
-        </div>
-    </div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Welcome to the Website!</h1>
+    <p>This is the main content of the website.</p>
+    <div id="private-raptor" class="raptor-card">Click me for a surprise!</div>
+  </div>
 
-    <script>
-        // Get all cards and the wall container
-        const cards = document.querySelectorAll('.card');
-        const wallContainer = document.querySelector('.wall-container');
+  <!-- Hall of Fame Section (Easter Egg) -->
+  <div class="wall-of-fame hidden">
+    <h2>Hall of Fame</h2>
+    <p>Congratulations! You've found the Easter Egg!</p>
+    <p>This section is dedicated to our top contributors.</p>
+  </div>
 
-        // Function to reset all cards
-        function resetCards() {
-            cards.forEach(card => card.classList.remove('active'));
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Elements
+      const raptorCard = document.getElementById("private-raptor");
+      const hallOfFameSection = document.querySelector(".wall-of-fame");
+      const mainContent = document.querySelector(".main-content");
+
+      // Function to reset Easter Egg
+      function resetEasterEggs() {
+        hallOfFameSection.classList.add("hidden");
+        mainContent.classList.remove("hidden");
+      }
+
+      // Show Hall of Fame when Raptor card is clicked
+      raptorCard.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent click bubbling
+        hallOfFameSection.classList.remove("hidden");
+        mainContent.classList.add("hidden");
+      });
+
+      // Reset everything on clicking anywhere outside
+      document.addEventListener("click", (e) => {
+        if (!hallOfFameSection.contains(e.target) && !raptorCard.contains(e.target)) {
+          resetEasterEggs();
         }
-
-        // Add click event to each card
-        cards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent click bubbling
-                resetCards();
-                card.classList.add('active');
-            });
-        });
-
-        // Reset cards when clicking anywhere else
-        document.body.addEventListener('click', resetCards);
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
