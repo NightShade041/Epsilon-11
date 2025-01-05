@@ -1,100 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Easter Egg Example</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epsilon-11</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #fff;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        header p {
+            font-style: italic;
+            margin: 5px 0 0;
+        }
+        nav {
+            background: #333;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .main-content {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .main-content img {
+            width: 200px;
+            height: auto;
+        }
+        .main-content h2 {
+            font-size: 2em;
+            margin: 20px 0;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff;
+        }
+        .main-content p {
+            font-size: 1.2em;
+        }
 
-    .main-content, .wall-of-fame {
-      margin: 20px;
-      padding: 20px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 600px;
-      text-align: center;
-    }
+        /* Staff Gallery Section */
+        #staff-gallery {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #444;
+        }
+        #staff-gallery h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        #staff-gallery p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background: #555;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
 
-    .hidden {
-      display: none;
-    }
+        .description {
+            display: none;
+            color: #fff;
+            margin-top: 10px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+        }
 
-    /* Hall of Fame Section */
-    .wall-of-fame {
-      background-color: #f5f5f5;
-      color: #333;
-    }
-
-    /* Raptor Easter Egg Trigger */
-    .raptor-card {
-      margin: 20px;
-      padding: 20px;
-      background-color: #ffc107;
-      color: black;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 2px solid #ff9800;
-    }
-
-    .raptor-card:hover {
-      background-color: #ff9800;
-      color: white;
-    }
-  </style>
+        .card:hover .description {
+            display: block;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff;
+        }
+    </style>
 </head>
 <body>
-  <!-- Main Content -->
-  <div class="main-content">
-    <h1>Welcome to the Website!</h1>
-    <p>This is the main content of the website.</p>
-    <div id="private-raptor" class="raptor-card">Click me for a surprise!</div>
-  </div>
+    <header>
+        <h1>Epsilon-11</h1>
+        <p>Secure. Contain. Protect.</p>
+    </header>
+    <nav>
+        <a href="#">Overview</a>
+        <a href="#staff-gallery">Wall of Fame</a>
+        <a href="#incident-reports">Incident Reports</a>
+        <a href="#">Classified Files</a>
+    </nav>
+    <div class="main-content">
+        <img src="epsilon-11.png" alt="Epsilon-11 Logo">
+        <h2>WELCOME TO EPSILON-11</h2>
+        <p>The Task Force Even The Anomalies Fear.</p>
+    </div>
 
-  <!-- Hall of Fame Section (Easter Egg) -->
-  <div class="wall-of-fame hidden">
-    <h2>Hall of Fame</h2>
-    <p>Congratulations! You've found the Easter Egg!</p>
-    <p>This section is dedicated to our top contributors.</p>
-  </div>
+    <!-- Wall of Fame -->
+    <section id="staff-gallery" class="section">
+        <h2>Wall of Fame</h2>
+        <p>The Wall of Fame is a section where we highlight the most famous operatives and all those who helped in the development of Epsilon-11.</p>
+        <div style="height: 40px;"></div>
+        <div class="card-container">
+            <!-- Raptor's Card with Easter Egg -->
+            <div class="card" id="raptor-card">
+                <img src="raptor.png" alt="Raptor">
+                <h3>"Private Raptor"</h3>
+                <div id="description4" class="description">
+                    <p>Private Raptor is the Overseer's Right Hand and one of the most active, welcoming and professional operatives in Epsilon-11!</p>
+                </div>
+            </div>
+            <!-- Other Cards -->
+            <div class="card">
+                <img src="starlight.png" alt="Starlight">
+                <h3>"Starlight"</h3>
+                <div class="description">
+                    <p>Starlight is an assistant field director and the creator of this website!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="reaper.png" alt="Reaper">
+                <h3>"Reaper"</h3>
+                <div class="description">
+                    <p>Reaper is the Leader of Epsilon-11!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shock2.png" alt="Shock">
+                <h3>"Shock"</h3>
+                <div class="description">
+                    <p>Shock is a field director and one of the most active operatives of Epsilon-11!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="lynx.png" alt="Lynx">
+                <h3>"Lynx"</h3>
+                <div class="description">
+                    <p>Lynx is a technical officer responsible for maintaining operational readiness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Elements
-      const raptorCard = document.getElementById("private-raptor");
-      const hallOfFameSection = document.querySelector(".wall-of-fame");
-      const mainContent = document.querySelector(".main-content");
+    <script>
+        // Easter Egg for Raptor's Card
+        let clickCount = 0;
+        const raptorCard = document.getElementById('raptor-card');
+        const raptorDescription = document.getElementById('description4');
 
-      // Function to reset Easter Egg
-      function resetEasterEggs() {
-        hallOfFameSection.classList.add("hidden");
-        mainContent.classList.remove("hidden");
-      }
-
-      // Show Hall of Fame when Raptor card is clicked
-      raptorCard.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent click bubbling
-        hallOfFameSection.classList.remove("hidden");
-        mainContent.classList.add("hidden");
-      });
-
-      // Reset everything on clicking anywhere outside
-      document.addEventListener("click", (e) => {
-        if (!hallOfFameSection.contains(e.target) && !raptorCard.contains(e.target)) {
-          resetEasterEggs();
-        }
-      });
-    });
-  </script>
+        raptorCard.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount === 5) {
+                raptorDescription.innerHTML = `
+                    <p><strong>"Private! See that guy over there?"</strong></p>
+                    <p><strong>"Y-Yes?"</strong></p>
+                    <p><strong>"Well I don't want to see him anymore!"</strong></p>
+                `;
+                raptorDescription.style.display = 'block';
+                clickCount = 0; // Reset the counter for future surprises
+            }
+        });
+    </script>
 </body>
 </html>
