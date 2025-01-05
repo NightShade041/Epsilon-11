@@ -56,7 +56,6 @@
             font-size: 1.2em;
         }
 
-        /* Staff Gallery Section */
         #staff-gallery {
             padding: 50px 20px;
             text-align: center;
@@ -92,17 +91,51 @@
         .card:hover {
             transform: scale(1.05);
         }
-
         .description {
             display: none;
             color: #fff;
             margin-top: 10px;
             text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
         }
-
-        .card:hover .description {
-            display: block;
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff;
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            text-align: center;
+            z-index: 1000;
+        }
+        #popup p {
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        #popup button {
+            padding: 10px 20px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+        #popup button:hover {
+            background-color: #555;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
         }
     </style>
 </head>
@@ -118,18 +151,15 @@
         <a href="#">Classified Files</a>
     </nav>
     <div class="main-content">
-        <img src="epsilon-11.png" alt="Epsilon-11 Logo">
+        <img id="nine-tailed-fox-logo" src="epsilon-11-logo.png" alt="Nine-Tailed Fox Logo">
         <h2>WELCOME TO EPSILON-11</h2>
         <p>The Task Force Even The Anomalies Fear.</p>
     </div>
 
-    <!-- Wall of Fame -->
-    <section id="staff-gallery" class="section">
+    <section id="staff-gallery">
         <h2>Wall of Fame</h2>
         <p>The Wall of Fame is a section where we highlight the most famous operatives and all those who helped in the development of Epsilon-11.</p>
-        <div style="height: 40px;"></div>
         <div class="card-container">
-            <!-- Raptor's Card with Easter Egg -->
             <div class="card" id="raptor-card">
                 <img src="raptor.png" alt="Raptor">
                 <h3>"Private Raptor"</h3>
@@ -137,56 +167,66 @@
                     <p>Private Raptor is the Overseer's Right Hand and one of the most active, welcoming and professional operatives in Epsilon-11!</p>
                 </div>
             </div>
-            <!-- Other Cards -->
-            <div class="card">
-                <img src="starlight.png" alt="Starlight">
-                <h3>"Starlight"</h3>
-                <div class="description">
-                    <p>Starlight is an assistant field director and the creator of this website!</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="reaper.png" alt="Reaper">
-                <h3>"Reaper"</h3>
-                <div class="description">
-                    <p>Reaper is the Leader of Epsilon-11!</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="shock2.png" alt="Shock">
-                <h3>"Shock"</h3>
-                <div class="description">
-                    <p>Shock is a field director and one of the most active operatives of Epsilon-11!</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="lynx.png" alt="Lynx">
-                <h3>"Lynx"</h3>
-                <div class="description">
-                    <p>Lynx is a technical officer responsible for maintaining operational readiness.</p>
-                </div>
-            </div>
         </div>
     </section>
 
+    <div id="overlay"></div>
+    <div id="popup">
+        <p id="popup-text">You clicked the Nine-Tailed Fox logo 10 times!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
     <script>
-        // Easter Egg for Raptor's Card
-        let clickCount = 0;
+        // Raptor Easter Egg
+        let raptorClickCount = 0;
         const raptorCard = document.getElementById('raptor-card');
         const raptorDescription = document.getElementById('description4');
 
-        raptorCard.addEventListener('click', () => {
-            clickCount++;
-            if (clickCount === 5) {
+        raptorCard.addEventListener('click', (event) => {
+            raptorClickCount++;
+            if (raptorClickCount === 5) {
                 raptorDescription.innerHTML = `
                     <p><strong>"Private! See that guy over there?"</strong></p>
                     <p><strong>"Y-Yes?"</strong></p>
                     <p><strong>"Well I don't want to see him anymore!"</strong></p>
                 `;
                 raptorDescription.style.display = 'block';
-                clickCount = 0;
+                event.stopPropagation();
             }
         });
+
+        // Reset Raptor Easter Egg
+        document.addEventListener('click', (event) => {
+            if (!raptorCard.contains(event.target)) {
+                raptorClickCount = 0;
+                raptorDescription.innerHTML = `
+                    <p>Private Raptor is the Overseer's Right Hand and one of the most active, welcoming and professional operatives in Epsilon-11!</p>
+                `;
+            }
+        });
+
+        // Nine-Tailed Fox Easter Egg
+        let foxClickCount = 0;
+        const foxLogo = document.getElementById('nine-tailed-fox-logo');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const popupText = document.getElementById('popup-text');
+
+        foxLogo.addEventListener('click', (event) => {
+            foxClickCount++;
+            if (foxClickCount === 10) {
+                popupText.innerHTML = "You clicked the Nine-Tailed Fox logo 10 times! Add your custom message here.";
+                popup.style.display = 'block';
+                overlay.style.display = 'block';
+                foxClickCount = 0;
+                event.stopPropagation();
+            }
+        });
+
+        function closePopup() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
     </script>
 </body>
 </html>
