@@ -5,98 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epsilon-11</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #000;
-            color: #fff;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background: #222;
-        }
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-        header p {
-            font-style: italic;
-            margin: 5px 0 0;
-        }
-        nav {
-            background: #333;
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.1em;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .main-content {
-            text-align: center;
-            padding: 50px 20px;
-        }
-        .main-content img {
-            width: 200px;
-            height: auto;
-        }
-        .main-content h2 {
-            font-size: 2em;
-            margin: 20px 0;
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff;
-        }
-        .main-content p {
-            font-size: 1.2em;
-        }
-
-        #staff-gallery {
-            padding: 50px 20px;
-            text-align: center;
-            background-color: #444;
-        }
-        #staff-gallery h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        #staff-gallery p {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-        }
-        .card-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .card {
-            background: #555;
-            width: 250px;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        .description {
-            display: none;
-            color: #fff;
-            margin-top: 10px;
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
-        }
+        /* Add this to your existing CSS */
         #popup {
             display: none;
             position: fixed;
@@ -156,10 +65,13 @@
         <p>The Task Force Even The Anomalies Fear.</p>
     </div>
 
-    <section id="staff-gallery">
+    <!-- Wall of Fame Section -->
+    <section id="staff-gallery" class="section">
         <h2>Wall of Fame</h2>
         <p>The Wall of Fame is a section where we highlight the most famous operatives and all those who helped in the development of Epsilon-11.</p>
+        <div style="height: 40px;"></div>
         <div class="card-container">
+            <!-- Raptor's Card -->
             <div class="card" id="raptor-card">
                 <img src="raptor.png" alt="Raptor">
                 <h3>"Private Raptor"</h3>
@@ -170,6 +82,7 @@
         </div>
     </section>
 
+    <!-- Popup -->
     <div id="overlay"></div>
     <div id="popup">
         <p id="popup-text">You clicked the Nine-Tailed Fox logo 10 times!</p>
@@ -177,34 +90,6 @@
     </div>
 
     <script>
-        // Raptor Easter Egg
-        let raptorClickCount = 0;
-        const raptorCard = document.getElementById('raptor-card');
-        const raptorDescription = document.getElementById('description4');
-
-        raptorCard.addEventListener('click', (event) => {
-            raptorClickCount++;
-            if (raptorClickCount === 5) {
-                raptorDescription.innerHTML = `
-                    <p><strong>"Private! See that guy over there?"</strong></p>
-                    <p><strong>"Y-Yes?"</strong></p>
-                    <p><strong>"Well I don't want to see him anymore!"</strong></p>
-                `;
-                raptorDescription.style.display = 'block';
-                event.stopPropagation();
-            }
-        });
-
-        // Reset Raptor Easter Egg
-        document.addEventListener('click', (event) => {
-            if (!raptorCard.contains(event.target)) {
-                raptorClickCount = 0;
-                raptorDescription.innerHTML = `
-                    <p>Private Raptor is the Overseer's Right Hand and one of the most active, welcoming and professional operatives in Epsilon-11!</p>
-                `;
-            }
-        });
-
         // Nine-Tailed Fox Easter Egg
         let foxClickCount = 0;
         const foxLogo = document.getElementById('nine-tailed-fox-logo');
@@ -212,14 +97,13 @@
         const overlay = document.getElementById('overlay');
         const popupText = document.getElementById('popup-text');
 
-        foxLogo.addEventListener('click', (event) => {
+        foxLogo.addEventListener('click', () => {
             foxClickCount++;
             if (foxClickCount === 10) {
                 popupText.innerHTML = "You clicked the Nine-Tailed Fox logo 10 times! Add your custom message here.";
                 popup.style.display = 'block';
                 overlay.style.display = 'block';
-                foxClickCount = 0;
-                event.stopPropagation();
+                foxClickCount = 0; // Reset the counter
             }
         });
 
