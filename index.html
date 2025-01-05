@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content=width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epsilon-11</title>
     <style>
         body {
@@ -134,7 +134,36 @@
                 <img src="raptor.png" alt="Raptor">
                 <h3>"Private Raptor"</h3>
                 <div id="description4" class="description">
-                    <p>Private Raptor is the Overseer's Right Hand and one of the most active, welcoming and professional operative in Epsilon-11!</p>
+                    <p>Private Raptor is the Overseer's Right Hand and one of the most active, welcoming and professional operatives in Epsilon-11!</p>
+                </div>
+            </div>
+            <!-- Other Cards -->
+            <div class="card">
+                <img src="starlight.png" alt="Starlight">
+                <h3>"Starlight"</h3>
+                <div class="description">
+                    <p>Starlight is an assistant field director and the creator of this website!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="reaper.png" alt="Reaper">
+                <h3>"Reaper"</h3>
+                <div class="description">
+                    <p>Reaper is the Leader of Epsilon-11!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shock2.png" alt="Shock">
+                <h3>"Shock"</h3>
+                <div class="description">
+                    <p>Shock is a field director and one of the most active operatives of Epsilon-11!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="lynx.png" alt="Lynx">
+                <h3>"Lynx"</h3>
+                <div class="description">
+                    <p>Lynx is a technical officer responsible for maintaining operational readiness.</p>
                 </div>
             </div>
         </div>
@@ -150,12 +179,12 @@
             clickCount++;
             if (clickCount === 5) {
                 raptorDescription.innerHTML = `
-                    <p><strong>Private!</strong> "See that guy over there?"</p>
-                    <p><strong>Y-Yes?</strong></p>
-                    <p><strong>Raptor:</strong> "Well I don't want to see him anymore!"</p>
+                    <p><strong>"Private! See that guy over there?"</strong></p>
+                    <p><strong>"Y-Yes?"</strong></p>
+                    <p><strong>"Well I don't want to see him anymore!"</strong></p>
                 `;
                 raptorDescription.style.display = 'block';
-                clickCount = 0; // Reset the counter for future surprises
+                clickCount = 0;
             }
         });
     </script>
