@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content=width=device-width, initial-scale=1.0">
     <title>Epsilon-11</title>
     <style>
         body {
@@ -56,30 +56,6 @@
             font-size: 1.2em;
         }
 
-        /* Incident Reports Section */
-        #incident-reports {
-            padding: 50px 20px;
-            text-align: center;
-            background-color: #222;
-        }
-        #incident-reports h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        #incident-reports a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2em;
-            display: block;
-            margin: 10px 0;
-            transition: all 0.3s ease;
-        }
-        #incident-reports a:hover {
-            font-size: 1.3em;
-            color: #fff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-        }
-
         /* Staff Gallery Section */
         #staff-gallery {
             padding: 50px 20px;
@@ -107,8 +83,9 @@
             text-align: center;
             border-radius: 10px;
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
-        .card-rgb img {
+        .card img {
             width: 100%;
             border-radius: 10px;
         }
@@ -152,84 +129,35 @@
         <p>The Wall of Fame is a section where we highlight the most famous operatives and all those who helped in the development of Epsilon-11.</p>
         <div style="height: 40px;"></div>
         <div class="card-container">
-            <div class="card" onclick="show_description(event)">
-                <div class="card-rgb">
-                    <img src="starlight.png" alt="Starlight" width="100%" />
-                    <h3>"Starlight"</h3>
-                    <div id="description1" class="description">
-                        <p>Starlight is an assistant field director and the creator of this website!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card" onclick="show_description(event)">
-                <div class="card-rgb">
-                    <img src="reaper.png" alt="Reaper" width="100%" />
-                    <h3>"Reaper"</h3>
-                    <div id="description2" class="description">
-                        <p>Reaper is the Leader of Epsilon-11!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card" onclick="show_description(event)">
-                <div class="card-rgb">
-                    <img src="shock2.png" alt="Shock" width="100%" />
-                    <h3>"Shock"</h3>
-                    <div id="description3" class="description">
-                        <p>Shock is a field director and one of the most active operatives of epsilon-11!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card" onclick="show_description(event)">
-                <div class="card-rgb">
-                    <img src="raptor.png" alt="member 4" width="100%" />
-                    <h3>"Raptor"</h3>
-                    <div id="description4" class="description">
-                        <p>A description will be added here!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card" onclick="show_description(event)">
-                <div class="card-rgb">
-                    <img src="lynx.png" alt="member 5" width="100%" />
-                    <h3>"Lynx"</h3>
-                    <div id="description5" class="description">
-                        <p>A description will be added here!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card" onclick="show_description(event)">
-                <div class="card-rgb">
-                    <img src="image" alt="member 6" width="100%" />
-                    <h3>6</h3>
-                    <div id="description6" class="description">
-                        <p>Not yet made!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card" onclick="show_description(event)">
-                <div class="card-rgb">
-                    <img src="image" alt="member 7" width="100%" />
-                    <h3>7</h3>
-                    <div id="description7" class="description">
-                        <p>Not yet made!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card" onclick="show_description(event)">
-                <div class="card-rgb">
-                    <img src="image" alt="member 8" width="100%" />
-                    <h3>8</h3>
-                    <div id="description8" class="description">
-                        <p>Not yet made!</p>
-                    </div>
+            <!-- Raptor's Card with Easter Egg -->
+            <div class="card" id="raptor-card">
+                <img src="raptor.png" alt="Raptor">
+                <h3>"Raptor"</h3>
+                <div id="description4" class="description">
+                    <p>A description will be added here!</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="incident-reports">
-        <h2>Incident Reports</h2>
-        <a href="https://docs.google.com/document/d/1Qt_ptxD8y3bnwYPlh6DCfGgkOBQ3y_U0a1oLP6NcllY/edit?usp=sharing" target="_blank">Incident Report #001 - Site Raid</a>
-    </div>
+    <script>
+        // Easter Egg for Raptor's Card
+        let clickCount = 0;
+        const raptorCard = document.getElementById('raptor-card');
+        const raptorDescription = document.getElementById('description4');
+
+        raptorCard.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount === 5) {
+                raptorDescription.innerHTML = `
+                    <p><strong>Private!</strong> "See that guy over there?"</p>
+                    <p><strong>Y-Yes?</strong></p>
+                    <p><strong>Raptor:</strong> "Well I don't want to see him anymore!"</p>
+                `;
+                raptorDescription.style.display = 'block';
+                clickCount = 0; // Reset the counter for future surprises
+            }
+        });
+    </script>
 </body>
 </html>
